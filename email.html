@@ -1,0 +1,45 @@
+<html>
+  <body>
+    <ul
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+        width: 300px;
+      "
+    >
+      {% for album in albums %}
+      <a
+        href="{{ album['link'] }}"
+        style="
+          display: flex;
+          border: 1px solid rgb(183, 182, 182);
+          border-radius: 2px;
+          padding: 5px;
+          align-items: center;
+          width: 100%;
+        "
+      >
+        <div style="display: flex; gap: 5px; align-items: center">
+          <img
+            src="{{album['cover']}}"
+            style="
+              height: 150px;
+              width: 150px;
+              object-position: center;
+              object-fit: fill;
+            "
+          />
+          <div style="display: flex; flex-direction: column; gap: 5px">
+            <span>{{album['title']}}</span>
+            <span
+              >{% for artist in album['artists'] %}{{artist}}{% endfor %}</span
+            >
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

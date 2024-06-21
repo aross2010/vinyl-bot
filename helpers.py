@@ -1,6 +1,6 @@
 import json, os, praw
 from pathlib import Path
-from dotenv import load_dotenv 
+from dotenv import load_dotenv
 
 # Returns the json object containing the post ids that have already been emailed out
 def read_posts_json():

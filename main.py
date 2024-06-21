@@ -12,3 +12,6 @@
 # Call clean.py every week 3:03 am, Sundays, remove any posts that arent less than five minutes old
 
 # If there are any errors, send an email error
+
+
+# Packages to install -> praw, discogs_client, dotenv, jinja2

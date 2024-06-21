@@ -9,6 +9,8 @@ def get_album_posts(ids):
     discogs_data = read_discogs_json()
     last_seen = read_last_seen_json()['main']
 
+    
+
     if not discogs_data: return
     
     data = []
@@ -57,24 +59,21 @@ def main():
     # Get recent posts to send with func
     recent_valid_posts = read_posts_json()
 
-    try:
-        ids = set([post['id'] for post in recent_valid_posts])
-        email_data = get_album_posts(ids)
-        if not email_data: 
-            print('No email to send')
-            return
+    ids = set([post['id'] for post in recent_valid_posts])
+    email_data = get_album_posts(ids)
+    if not email_data: 
+        print('No email to send')
+        return
+    send_email(email_data, True)
 
-        send_email(email_data, True)
+    for album in email_data:
+        recent_valid_posts.append({
+            "id": album["id"],
+            "time_posted": album['time_posted']
+        })
 
-        for album in email_data:
-            recent_valid_posts.append({
-                "id": album["id"],
-                "time_posted": album['time_posted']
-            })
+    write_posts_json(recent_valid_posts)
 
-        write_posts_json(recent_valid_posts)
 
-    except Exception:
-        print('Something went wrong fetching new posts.')
 
 main()

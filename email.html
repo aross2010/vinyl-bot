@@ -58,7 +58,7 @@
       {% else %}
       <p>I found some albums you're looking for:</p>
       {% endif %} {% else %} {% if albums|length == 1 %}
-      <p>I found an album you might like from {{album['artist'][0]}}</p>
+      <p>I found an album you might like from {{albums[0]['artists'][0]}}:</p>
       {% else %}
       <p>I found some albums you might like</p>
       {% endif %} {% endif %}

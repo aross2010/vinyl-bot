@@ -1,5 +1,4 @@
-import os
-import smtplib
+import os, smtplib
 from email.message import EmailMessage
 from email.utils import formataddr
 from pathlib import Path
@@ -8,10 +7,10 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 EMAIL_SERVER = "smtp.gmail.com"
 PORT = 587
 
-from dotenv import load_dotenv # pip install python-dotenv
+from dotenv import load_dotenv
 
-# Send email
-def send_email(data):
+# Send email if a new valid post was found
+def send_email(data, is_main):
 
     # Load environment variables
     current_dir = Path(__file__).resolve().parent if "__file__" in locals() else Path.cwd() # Return current folder
@@ -34,7 +33,7 @@ def send_email(data):
     autoescape=select_autoescape()
     )
     template = env.get_template("email.html")
-    html = template.render(albums=data)
+    html = template.render(albums=data, is_main=is_main)
 
     # Send HTML
     msg.add_alternative(
@@ -46,5 +45,3 @@ def send_email(data):
         server.login(sender_email, email_app_password)
         server.sendmail(sender_email, email_recepient, msg.as_string())
 
-# if __name__ == "__main__":
-#     send_email(receiver_email="adross1027@gmail.com", post_title="PETE ROCK")

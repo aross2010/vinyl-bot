@@ -10,6 +10,11 @@
     "cover": "https://i.discogs.com/nVfArlod_v217ZBBzHDTWdAdNCvXSZ1WZUsfGrpOu0w/rs:fit/g:sm/q:90/h:600/w:595/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI1MDgx/MTIzLTE3MDA4NjU2/MDktNjMzMS5qcGVn.jpeg"
   },
   {
+    "title": "F-1 Trillion",
+    "artists": ["Post Malone"],
+    "cover": "https://i.discogs.com/36ASZOpu3lxJdStjbZhLO8juToPMXyO03gvwD6gWIpk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0MjYy/OTQwLTE2NjEwMjk2/MDgtMjcwNC5qcGVn.jpeg"
+  },
+  {
     "title": "PeteStrumentals",
     "artists": ["Pete Rock"],
     "cover": "https://i.discogs.com/sxyjWrxE9ujlrUhHX2Sj1i7oFYmW4rZOZEGktJOPV5g/rs:fit/g:sm/q:90/h:600/w:595/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE1MDk0/LTE0Mzk2MTY3Njct/NzYwMi5qcGVn.jpeg"
@@ -115,6 +120,11 @@
     "cover": "https://i.discogs.com/EbGoPQMb1plizIXLv6YRZKUp2yo1WjJHwyyihPKgQfM/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE4Mzc5/OTQtMTQyNzY0ODY0/OC02NzE3LmpwZWc.jpeg"
   },
   {
+    "title": "No Doubt",
+    "artists": ["Rock Steady"],
+    "cover": "https://i.discogs.com/lujbexNKzPB872D1ttM6LeYgYxjPZ0hCeLu2eWu0GVw/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMwODg0/MzQ2LTE3MTc2OTAx/MTAtOTgyMi5qcGVn.jpeg"
+  },
+  {
     "title": "Why Lawd?",
     "artists": ["NxWorries"],
     "cover": "https://i.discogs.com/lujbexNKzPB872D1ttM6LeYgYxjPZ0hCeLu2eWu0GVw/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMwODg0/MzQ2LTE3MTc2OTAx/MTAtOTgyMi5qcGVn.jpeg"
@@ -125,6 +135,11 @@
     "cover": "https://i.discogs.com/yXRm9ixjkHAJkNSIkvoKSHqXTeSEhxvKUH_4NdfDvh0/rs:fit/g:sm/q:90/h:595/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE5NTkw/MzczLTE2MjY5OTc0/MTQtMTg2MS5qcGVn.jpeg"
   },
   {
+    "title": "The Epilogue",
+    "artists": ["Dean Lewis"],
+    "cover": "https://i.discogs.com/31cKiQZkjqPQ8Xg_zmJ85k1kDE8HqTfJI0bA5eNVFtQ/rs:fit/g:sm/q:90/h:600/w:551/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTU4OTAz/ODItMTY4NjYyMzkx/My0zOTk5LmpwZWc.jpeg"
+  },
+  {
     "title": "Center Of Attention",
     "artists": ["Pete Rock", "INI"],
     "cover": "https://i.discogs.com/_thf1JCISEAUcH2Op04azT1pRmJU2CKY8tZ0TWjqAn8/rs:fit/g:sm/q:90/h:450/w:450/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE0NjQ5/OTM2LTE1Nzg5MDQ1/NjctOTQ3NS5qcGVn.jpeg"
@@ -132,11 +147,6 @@
   {
     "title": "Moment Of Truth",
     "artists": ["Gang Starr"],
-    "cover": "https://i.discogs.com/z06mr3yzKdb9_rR-7sXNOyQ44hQRirbDhff9JDrqE-k/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI3NTMy/NDQzLTE2ODgwODEy/ODAtNzQzNS5qcGVn.jpeg"
-  },
-  {
-    "title": "Phantom Pop",
-    "artists": ["Wild Party"],
     "cover": "https://i.discogs.com/z06mr3yzKdb9_rR-7sXNOyQ44hQRirbDhff9JDrqE-k/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI3NTMy/NDQzLTE2ODgwODEy/ODAtNzQzNS5qcGVn.jpeg"
   }
 ]

@@ -1,45 +1,144 @@
+<!DOCTYPE html>
 <html>
-  <body>
-    <ul
-      style="
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        justify-content: center;
-        width: 300px;
-      "
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <style>
+      /* Basic reset for better compatibility */
+      body,
+      table,
+      td,
+      a {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+
+      img {
+        -ms-interpolation-mode: bicubic;
+      }
+      img {
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+      }
+      table {
+        border-collapse: collapse !important;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100% !important;
+        height: 100% !important;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+    "
+  >
+    <table
+      width="100%"
+      border="0"
+      cellspacing="0"
+      cellpadding="0"
     >
-      {% for album in albums %}
-      <a
-        href="{{ album['link'] }}"
-        style="
-          display: flex;
-          border: 1px solid rgb(183, 182, 182);
-          border-radius: 2px;
-          padding: 5px;
-          align-items: center;
-          width: 100%;
-        "
-      >
-        <div style="display: flex; gap: 5px; align-items: center">
-          <img
-            src="{{album['cover']}}"
-            style="
-              height: 150px;
-              width: 150px;
-              object-position: center;
-              object-fit: fill;
-            "
-          />
-          <div style="display: flex; flex-direction: column; gap: 5px">
-            <span>{{album['title']}}</span>
-            <span
-              >{% for artist in album['artists'] %}{{artist}}{% endfor %}</span
-            >
-          </div>
-        </div>
-      </a>
-      {% endfor %}
-    </ul>
+      <p>Hello,</p>
+      {% if isMain %} {% if albums|length == 1 %}
+      <p>I found an album you're looking for:</p>
+      {% else %}
+      <p>I found some albums you're looking for:</p>
+      {% endif %} {% else %} {% if albums|length == 1 %}
+      <p>I found an album you might like from {{album['artist'][0]}}</p>
+      {% else %}
+      <p>I found some albums you might like</p>
+      {% endif %} {% endif %}
+      <tr>
+        <td align="left">
+          <table
+            width="600"
+            border="0"
+            cellspacing="0"
+            cellpadding="0"
+          >
+            {% for album in albums %}
+            <tr>
+              <td
+                style="
+                  background-color: #3c3c3c;
+                  border-radius: 10px;
+                  padding: 10px;
+                "
+              >
+                <a
+                  href="{{ album['link'] }}"
+                  style="text-decoration: none; color: inherit"
+                >
+                  <table
+                    border="0"
+                    cellspacing="0"
+                    cellpadding="0"
+                  >
+                    <tr>
+                      <td style="padding-right: 10px">
+                        <img
+                          src="{{album['cover']}}"
+                          alt="Album Cover"
+                          style="
+                            height: 125px;
+                            width: 125px;
+                            object-fit: fill;
+                            display: block;
+                            border-radius: 5px;
+                            margin-right: 5px;
+                          "
+                        />
+                      </td>
+                      <td style="vertical-align: center; margin-left: 5px">
+                        <span
+                          style="
+                            display: block;
+                            font-size: 24px;
+                            font-weight: bold;
+                            color: white;
+                          "
+                          >{{album['title']}}</span
+                        >
+                        <span
+                          style="
+                            display: block;
+                            font-size: 18px;
+                            color: #e6e6e6;
+                          "
+                        >
+                          {% for artist in album['artists'] %} {{artist}}{% if
+                          not loop.last %}, {% endif %} {% endfor %}
+                        </span>
+                      </td>
+                    </tr>
+                  </table>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td style="height: 15px"></td>
+            </tr>
+            <!-- Spacer between items -->
+            {% endfor %}
+          </table>
+        </td>
+      </tr>
+    </table>
+    <p>You're welcome,</p>
+    <p>VinylBot 🤖</p>
   </body>
 </html>

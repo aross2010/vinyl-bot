@@ -1,13 +1,13 @@
 # This script fetches the user wantlist and parses the data to retrieve the albums or singles the user wants
 from pathlib import Path
 from dotenv import load_dotenv 
-import os, discogs_client, json
+import os, discogs_client, json, datetime
 
 MAX_PAGES = 10 # Limit wantlist to 1000 albums
 DISCOGS_USER = 'aross2010'
 
 
-# Fetches wantlist Data from Discogs. Returns a list of dictionaries containing album title, artists, and the album cover to discogs.json. -> to be fetched hourly
+# Fetches wantlist Data from Discogs. Returns a list of dictionaries containing album title, artists, and the album cover to discogs.json. -> to be fetched every four hours
 def get_wantlist_data():
 
     current_dir = Path(__file__).resolve().parent if "__file__" in locals() else Path.cwd() # Return current folder
@@ -39,15 +39,21 @@ def get_wantlist_data():
         wantlist_url = wantlist['pagination']['urls'].get('next', None) # if no url, wantlist_url = None
         if not wantlist_url: break
         wantlist = discogs._get(wantlist_url)
+
+    # Get full path
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    filename = os.path.join(dir_path, 'discogs.json')
+
     try:
-        with open('discogs.json', 'w') as file:
+        with open(filename, 'w') as file:
             json.dump(data, file, indent=4)
         
     except FileNotFoundError:
         print('discogs.json not found')
 
+def main():
+    get_wantlist_data()
+    time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    print(f'{time} -> Updated Discogs data!')
 
-# get wantlist every hour, check reddit every minute
-# daily recap of artists that might have released, every minute check albums 
-
-get_wantlist_data()
+main()

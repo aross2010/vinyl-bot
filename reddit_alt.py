@@ -1,5 +1,5 @@
 from helpers import get_reddit_instance, read_discogs_json, read_last_seen_json, write_last_seen_json, is_valid_match, read_posts_json, write_posts_json
-import time
+import time, datetime
 from send_email import send_email
 
 
@@ -72,6 +72,8 @@ def main():
             return
         
         send_email(email_data, False)
+        time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        print(f'{time} -> Email sent!', email_data)
 
         for album in email_data:
             recent_valid_posts.append({

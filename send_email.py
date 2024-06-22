@@ -28,11 +28,14 @@ def send_email(data, is_main):
     msg["From"] = formataddr(("VinylBot 🤖", f"{sender_email}"))
     msg["To"] = email_recepient
 
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+
     env = Environment(
-    loader=FileSystemLoader("."),
+    loader=FileSystemLoader(dir_path),
     autoescape=select_autoescape()
     )
-    template = env.get_template("email.html")
+
+    template = env.get_template('email.html')
     html = template.render(albums=data, is_main=is_main)
 
     # Send HTML

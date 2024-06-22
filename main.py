@@ -15,3 +15,7 @@
 
 
 # Packages to install -> praw, discogs_client, dotenv, jinja2
+
+# Crontab -> Vim, Press i, enter command, esc, :wq
+
+# /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/reddit_main.py

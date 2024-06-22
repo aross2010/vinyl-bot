@@ -4,8 +4,13 @@ from dotenv import load_dotenv
 
 # Returns the json object containing the post ids that have already been emailed out
 def read_posts_json():
+
+    # Get full path
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    filename = os.path.join(dir_path, 'posts.json')
+
     try:
-        with open('posts.json', 'r') as file:
+        with open(filename, 'r') as file:
             try:
                 return json.load(file)
             except Exception:
@@ -15,16 +20,26 @@ def read_posts_json():
 
 # Keeps track of which posts have been emailed out
 def write_posts_json(recent_valid_posts):
+
+    # Get full path
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    filename = os.path.join(dir_path, 'posts.json')
+
     try:
-        with open('posts.json', 'w') as file:
+        with open(filename, 'w') as file:
                 json.dump(recent_valid_posts, file, indent=4)
     except Exception:
         print('posts.json not found')   
 
 # Returns the json object containg the relevant wantlist data from discogs
 def read_discogs_json():
+
+    # Get full path
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    filename = os.path.join(dir_path, 'discogs.json')
+
     try:
-        with open('discogs.json', 'r') as file:
+        with open(filename, 'r') as file:
             try:
                 return json.load(file)
             except Exception:
@@ -36,8 +51,12 @@ def read_discogs_json():
 # Returns the last seen json object containing the last post seen for both types of fetches
 def read_last_seen_json():
 
+    # Get full path
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    filename = os.path.join(dir_path, 'last_seen.json')
+
     try:
-        with open('last_seen.json', 'r') as file:
+        with open(filename, 'r') as file:
                 return json.load(file)
     except Exception:
         print('last_seen.json not found')
@@ -49,8 +68,12 @@ def write_last_seen_json(is_main: bool, id: int):
     if is_main: last_seen['main'] = id
     else: last_seen['alt'] = id
 
+    # Get full path
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    filename = os.path.join(dir_path, 'last_seen.json')
+
     try:
-        with open('last_seen.json', 'w') as file:
+        with open(filename, 'w') as file:
                 json.dump(last_seen, file, indent=4)
     except Exception:
         print('last_seen.json not found')
@@ -70,8 +93,10 @@ def is_valid_match(key: str, post: str):
 
 # Returns a subreddit Instance to query the subreddit
 def get_reddit_instance():
-    current_dir = Path(__file__).resolve().parent if "__file__" in locals() else Path.cwd() # Return current folder
-    envars = current_dir / ".env"
+    
+    # Get full path
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    envars = os.path.join(dir_path, '.env')
     load_dotenv(envars)
 
     client_id = os.getenv("REDDIT_CLIENT_ID")

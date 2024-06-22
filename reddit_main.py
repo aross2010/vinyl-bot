@@ -1,4 +1,4 @@
-import time, json
+import time, datetime
 from helpers import read_discogs_json, get_reddit_instance, read_posts_json, read_last_seen_json, is_valid_match, write_posts_json, write_last_seen_json
 from send_email import send_email
 
@@ -64,7 +64,9 @@ def main():
     if not email_data: 
         print('No email to send')
         return
+    time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     send_email(email_data, True)
+    print(f'{time} -> Email Sent!', email_data)
 
     for album in email_data:
         recent_valid_posts.append({
@@ -74,6 +76,9 @@ def main():
 
     write_posts_json(recent_valid_posts)
 
-
+# 0/2 * * * * python3 {filename}
+#  
+# dir_path = os.path.dirname(os.path.realpath(__file__))
+# filename = os.path.join(dir_path, 'reddit_main.py')
 
 main()

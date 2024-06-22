@@ -53,9 +53,9 @@
       cellpadding="0"
     >
       <p>Hello,</p>
-      {% if isMain and albums|length == 1 %} 
+      {% if is_main and albums|length == 1 %}
       <p>I found an album you're looking for:</p>
-      {% elif isMain %}
+      {% elif is_main %}
       <p>I found some albums you're looking for:</p>
       {% elif albums|length == 1 %}
       <p>I found an album you might like from {{albums[0]['artists'][0]}}:</p>

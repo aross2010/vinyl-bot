@@ -5,7 +5,7 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 EMAIL_SERVER = "smtp.gmail.com"
-PORT = 587
+PORT = 587 # gmail port
 
 from dotenv import load_dotenv
 

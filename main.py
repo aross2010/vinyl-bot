@@ -19,3 +19,15 @@
 # Crontab -> Vim, Press i, enter command, esc, :wq
 
 # /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/reddit_main.py
+
+# Main script ran every even minute
+# */2 * * * * /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/reddit_main.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1
+
+# # Alt script ran every night at 8:59pm
+# 59 8 * * * /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/reddit_alt.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1
+
+# # Discogs script every one minute past the fourth hour
+# 1 */4 * * * /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/discogs.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1    
+
+# # Cleaning script every Monday at 1:01 am
+# 1 1 * * 1 /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/clean.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1

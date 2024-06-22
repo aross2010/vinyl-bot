@@ -58,8 +58,8 @@ Select Vim as the editor and press 'i' to insert the following text:
 # # Discogs script every one minute past every fourth hour
 1 */4 * * * /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/discogs.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1    
 
-# # Cleaning script every Monday at 1:01 am
-1 1 * * 1 /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/clean.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1
+# # Cleaning script every Sunday at 11:59pm
+59 11 * * 6 /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/clean.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1
 ````
 Press 'esc' and ':wq' enter to quit and write out of the editor.
 

@@ -10,8 +10,9 @@ DISCOGS_USER = 'aross2010'
 # Fetches wantlist Data from Discogs. Returns a list of dictionaries containing album title, artists, and the album cover to discogs.json. -> to be fetched every four hours
 def get_wantlist_data():
 
-    current_dir = Path(__file__).resolve().parent if "__file__" in locals() else Path.cwd() # Return current folder
-    envars = current_dir / ".env"
+    # Get full path
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    envars = os.path.join(dir_path, '.env')
     load_dotenv(envars)
 
     app_name = os.getenv("DISCOGS_APP")

@@ -2,7 +2,7 @@
 
 <img src="https://github.com/aross2010/vinyl-bot/assets/121838301/ed9e7014-6605-4d74-9f90-49b72137d73b" height="450"/>
 
-VinylBot give you real-time notifications on the vinyl drops you need! It regularly checks your Discogs watchlist to know what you want and utilizes r/VinylReleases to send you an email the minute something you want is posted. Here's how to download your own VinylBot for the music you need:
+VinylBot gives you real-time notifications on the vinyl drops you need! It regularly checks your Discogs watchlist to know what you want and utilizes r/VinylReleases to send you an email the minute something you want is posted. Here's how to download your own VinylBot for the music you need:
 
 ### Pre-requisites
 

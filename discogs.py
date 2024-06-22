@@ -1,7 +1,7 @@
 # This script fetches the user wantlist and parses the data to retrieve the albums or singles the user wants
-from pathlib import Path
+from datetime import datetime
 from dotenv import load_dotenv 
-import os, discogs_client, json, datetime
+import os, discogs_client, json
 
 MAX_PAGES = 10 # Limit wantlist to 1000 albums
 DISCOGS_USER = 'aross2010'

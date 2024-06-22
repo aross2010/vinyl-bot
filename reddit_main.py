@@ -1,4 +1,5 @@
-import time, datetime
+from datetime import datetime
+import time
 from helpers import read_discogs_json, get_reddit_instance, read_posts_json, read_last_seen_json, is_valid_match, write_posts_json, write_last_seen_json
 from send_email import send_email
 
@@ -8,8 +9,6 @@ def get_album_posts(ids):
     vinyl_releases = get_reddit_instance()
     discogs_data = read_discogs_json()
     last_seen = read_last_seen_json()['main']
-
-    
 
     if not discogs_data: return
     
@@ -61,6 +60,13 @@ def main():
 
     ids = set([post['id'] for post in recent_valid_posts])
     email_data = get_album_posts(ids)
+    email_data = [{
+        "title": "Center of Attention",
+        "artists": ["Pete Rock", "INI"],
+        "cover": "https://i.discogs.com/_thf1JCISEAUcH2Op04azT1pRmJU2CKY8tZ0TWjqAn8/rs:fit/g:sm/q:90/h:450/w:450/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE0NjQ5/OTM2LTE1Nzg5MDQ1/NjctOTQ3NS5qcGVn.jpeg",
+        "id": "fwef",
+        "time_posted": 234234
+    }]
     if not email_data: 
         print('No email to send')
         return

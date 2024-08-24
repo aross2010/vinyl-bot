@@ -2,7 +2,7 @@
 
 <img src="https://github.com/aross2010/vinyl-bot/assets/121838301/ed9e7014-6605-4d74-9f90-49b72137d73b" height="450"/>
 
-VinylBot gives you real-time notifications on the vinyl drops you need! It regularly checks your Discogs watchlist to know what you want and utilizes r/VinylReleases to send you an email the minute something you want is posted. Here's how to download your own VinylBot for the music you need:
+VinylBot gives you real-time notifications on the vinyl drops you need! It regularly checks your Discogs watchlist to automatically know what you're looking for and utilizes r/VinylReleases to send you an email the minute something you want is posted. Here's how to download your own VinylBot for the music you need:
 
 ### Pre-requisites
 
@@ -50,16 +50,16 @@ Select Vim as the editor and press 'i' to insert the following text:
 
 ````
 # Main script ran every even minute
-*/2 * * * * /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/reddit_main.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1
+*/2 * * * * [python3 path] [insert path]/reddit_main.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1
 
 # # Alt script ran every night at 8:59pm
-59 8 * * * /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/reddit_alt.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1
+59 8 * * * [python3 path] [insert path]/reddit_alt.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1
 
 # # Discogs script every one minute past every fourth hour
-1 */4 * * * /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/discogs.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1    
+1 */4 * * * [python3 path] [insert path]/discogs.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1    
 
 # # Cleaning script every Sunday at 11:59pm
-59 11 * * 6 /usr/bin/python3 /home/aross/vinyl-bot/vinyl-bot/clean.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1
+59 11 * * 6 [python3 path] [insert path]/clean.py >> /home/aross/vinyl-bot/vinyl-bot/cron.log 2>&1
 ````
 Press 'esc' and ':wq' enter to quit and write out of the editor.
 

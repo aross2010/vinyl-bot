@@ -32,6 +32,7 @@ def get_artists_posts(ids):
         for album in discogs_data:
             match = True
             for artist in album['artists']:
+                if artist.lower().includes('various'): continue # Skip various artists
                 if not is_valid_match(artist.lower(), post_title_lower): 
                     match = False
                     break

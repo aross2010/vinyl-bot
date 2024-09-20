@@ -81,12 +81,13 @@ def write_last_seen_json(is_main: bool, id: int):
 def is_valid_match(key: str, post: str):
     while True:
         start_index = post.find(key)
-        if start_index == -1: return False
+        if start_index == -1: 
+            return False
         start_index_minus = max(0, start_index - 1)
         end_index_plus = min(len(post), start_index + len(key) + 1)
         post_substring = post[start_index_minus:end_index_plus]
-        if post_substring[0].isalpha() or post_substring[-1].isalpha(): # No match, search rest of post after found substring
-            post = post[start_index+len(key)+1:] 
+        if (start_index_minus > 0 and post_substring[0].isalnum()) or (end_index_plus < len(post) and post_substring[-1].isalnum()): 
+            post = post[start_index + len(key) + 1:] 
         else: 
             return True
 

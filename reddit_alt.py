@@ -68,12 +68,13 @@ def main():
         ids = set([post['id'] for post in recent_valid_posts])
         email_data = get_artists_posts(ids)
 
+        time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
         if not email_data: 
-            print('No email to send')
+            print(f'No email to send from alt - {time}')
             return
         
         send_email(email_data, False)
-        time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print(f'{time} -> Email sent!', email_data)
 
         for album in email_data:

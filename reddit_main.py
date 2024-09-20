@@ -19,7 +19,6 @@ def get_album_posts(ids):
     for submission in vinyl_releases.new(limit=10):
         post = vars(submission)
         post_id = post['id']
-
         if post_id == last_seen: break # The rest of the list has already been checked
         if not last_id_seen: last_id_seen = post_id # Set to the first new post seen
         if post_id in ids: continue # Email already sent, skip
@@ -27,6 +26,7 @@ def get_album_posts(ids):
         post_title = post['title']
         post_title_lower = post_title.strip().lower()
         discogs_album_match = None
+    
 
         # Search discog albums for a valid match
         for album in discogs_data:
@@ -61,10 +61,12 @@ def main():
     ids = set([post['id'] for post in recent_valid_posts])
     email_data = get_album_posts(ids)
 
-    if not email_data: 
-        print('No email to send')
-        return
     time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    if not email_data: 
+        print(f'No email to send from main - {time}')
+        return
+
     send_email(email_data, True)
     print(f'{time} -> Email Sent!', email_data)
 

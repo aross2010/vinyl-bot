@@ -52,8 +52,8 @@ Select Vim as the editor and press 'i' to insert the following text:
 # Main script ran every even minute
 */2 * * * * [python3 path] [insert path]/reddit_main.py >> [project folder path]/cron.log 2>&1
 
-# # Alt script ran every night at 8:59pm
-59 8 * * * [python3 path] [insert path]/reddit_alt.py >> [project folder path]/cron.log 2>&1
+# # Alt script ran every night at 12:59pm
+59 12 * * * [python3 path] [insert path]/reddit_alt.py >> [project folder path]/cron.log 2>&1
 
 # # Discogs script every one minute past every fourth hour
 1 */4 * * * [python3 path] [insert path]/discogs.py >> [project folder path]/cron.log 2>&1    

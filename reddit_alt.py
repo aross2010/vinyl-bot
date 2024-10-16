@@ -86,7 +86,7 @@ def main():
         write_posts_json(recent_valid_posts)
 
     except Exception:
-        print('Something went wrong fetching new posts.')
+        print('Something went wrong fin the main script.', Exception)
 
 
 main()

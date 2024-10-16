@@ -58,25 +58,30 @@ def main():
     # Get recent posts to send with func
     recent_valid_posts = read_posts_json()
 
-    ids = set([post['id'] for post in recent_valid_posts])
-    email_data = get_album_posts(ids)
+    try:
 
-    time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        ids = set([post['id'] for post in recent_valid_posts])
+        email_data = get_album_posts(ids)
 
-    if not email_data: 
-        print(f'No email to send from main - {time}')
-        return
+        time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    send_email(email_data, True)
-    print(f'{time} -> Email Sent!', email_data)
+        if not email_data: 
+            print(f'No email to send from main - {time}')
+            return
 
-    for album in email_data:
-        recent_valid_posts.append({
-            "id": album["id"],
-            "time_posted": album['time_posted']
-        })
+        send_email(email_data, True)
+        print(f'{time} -> Email Sent!', email_data)
 
-    write_posts_json(recent_valid_posts)
+        for album in email_data:
+            recent_valid_posts.append({
+                "id": album["id"],
+                "time_posted": album['time_posted']
+            })
+
+        write_posts_json(recent_valid_posts)
+    
+    except Exception:
+        print('Something went wrong in the alt script.', Exception)
 
 # 0/2 * * * * python3 {filename}
 #  

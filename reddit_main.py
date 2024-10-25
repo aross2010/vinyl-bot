@@ -80,8 +80,8 @@ def main():
 
         write_posts_json(recent_valid_posts)
     
-    except Exception:
-        print('Something went wrong in the alt script.', Exception)
+    except Exception as e:
+        print('Something went wrong in the main script.', e)
 
 # 0/2 * * * * python3 {filename}
 #  

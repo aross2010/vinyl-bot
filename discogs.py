@@ -1,7 +1,9 @@
 # This script fetches the user wantlist and parses the data to retrieve the albums or singles the user wants
 from datetime import datetime
 from dotenv import load_dotenv 
-import os, discogs_client, json
+import os, json
+import re
+import discogs_client
 
 MAX_PAGES = 10 # Limit wantlist to 1000 albums
 DISCOGS_USER = 'aross2010'
@@ -30,7 +32,11 @@ def get_wantlist_data():
             info = album['basic_information']
             title = info.get('title', None)
             artists = info.get('artists', None)
-            artist_names = [artist.get('name', None) for artist in artists]
+            artist_names = []
+            for artist in artists:
+                name = artist['name']
+                cleaned_name = re.sub(r'\s\(\d+\)', '', name) # some artists have 'name (number)' format
+                artist_names.append(cleaned_name)
             cover = info.get('cover_image', None)
             data.append({
                 "title": title,

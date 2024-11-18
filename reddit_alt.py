@@ -1,5 +1,6 @@
 from helpers import get_reddit_instance, read_discogs_json, read_last_seen_json, write_last_seen_json, is_valid_match, read_posts_json, write_posts_json
-import time, datetime
+from datetime import datetime
+import time
 from send_email import send_email
 
 
@@ -32,7 +33,7 @@ def get_artists_posts(ids):
         for album in discogs_data:
             match = True
             for artist in album['artists']:
-                if artist.lower().includes('various'): continue # Skip various artists
+                if 'various' in artist.lower(): continue # Skip various artists
                 if not is_valid_match(artist.lower(), post_title_lower): 
                     match = False
                     break
@@ -85,8 +86,8 @@ def main():
         
         write_posts_json(recent_valid_posts)
 
-    except Exception:
-        print('Something went wrong fetching new posts.')
+    except Exception as e:
+        print('Something went wrong in the alt script.', e)
 
 
 main()

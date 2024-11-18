@@ -8,7 +8,6 @@ VinylBot gives you real-time notifications on the vinyl drops you need! It regul
 
 1. Must have [Python](https://www.python.org/downloads/) installed
 2. Have a Reddit and Discogs account
-3. Utilize a low power consumption computer to be continuously on to schedule the scripts (e.g. Raspberry Pi)
 
 ### Installation Instructions
 
@@ -52,8 +51,8 @@ Select Vim as the editor and press 'i' to insert the following text:
 # Main script ran every even minute
 */2 * * * * [python3 path] [insert path]/reddit_main.py >> [project folder path]/cron.log 2>&1
 
-# # Alt script ran every night at 8:59pm
-59 8 * * * [python3 path] [insert path]/reddit_alt.py >> [project folder path]/cron.log 2>&1
+# # Alt script ran every night at 12:59pm
+59 12 * * * [python3 path] [insert path]/reddit_alt.py >> [project folder path]/cron.log 2>&1
 
 # # Discogs script every one minute past every fourth hour
 1 */4 * * * [python3 path] [insert path]/discogs.py >> [project folder path]/cron.log 2>&1    

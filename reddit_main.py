@@ -2,13 +2,14 @@ from datetime import datetime
 import time
 from helpers import read_discogs_json, get_reddit_instance, read_posts_json, read_last_seen_json, is_valid_match, write_posts_json, write_last_seen_json
 from send_email import send_email
+import traceback
 
 # Fetch reddit posts that contain the album name -> to be ran every two minutes
 def get_album_posts(ids):
 
     vinyl_releases = get_reddit_instance()
     discogs_data = read_discogs_json()
-    last_seen = read_last_seen_json()['main']
+    last_seen = read_last_seen_json().get('main', None) 
 
     if not discogs_data: return
     
@@ -30,7 +31,7 @@ def get_album_posts(ids):
 
         # Search discog albums for a valid match
         for album in discogs_data:
-            if is_valid_match(album['title'].lower(), post_title_lower): # Valid match
+            if is_valid_match(album['title'].lower(), [artist.lower() for artist in album['artists']], post_title_lower): # Valid match
                 discogs_album_match = album
                 break
 
@@ -60,7 +61,7 @@ def main():
 
     try:
 
-        ids = set([post['id'] for post in recent_valid_posts])
+        ids = set([post['id'] for post in recent_valid_posts]) if recent_valid_posts else set()
         email_data = get_album_posts(ids)
 
         time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -81,7 +82,7 @@ def main():
         write_posts_json(recent_valid_posts)
     
     except Exception as e:
-        print('Something went wrong in the main script.', e)
+        print('Something went wrong in the main script.', traceback.print_exc())
 
 # 0/2 * * * * python3 {filename}
 #  

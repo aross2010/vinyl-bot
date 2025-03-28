@@ -1,4 +1,4 @@
-from helpers import get_reddit_instance, read_discogs_json, read_last_seen_json, write_last_seen_json, is_valid_match, read_posts_json, write_posts_json
+from helpers import get_reddit_instance, read_discogs_json, read_last_seen_json, write_last_seen_json, is_valid_match, read_posts_json, write_posts_json, is_valid_match_artist
 from datetime import datetime
 import time
 from send_email import send_email
@@ -34,7 +34,7 @@ def get_artists_posts(ids):
             match = True
             for artist in album['artists']:
                 if 'various' in artist.lower(): continue # Skip various artists
-                if not is_valid_match(artist.lower(), post_title_lower): 
+                if not is_valid_match_artist(artist.lower(), post_title_lower): 
                     match = False
                     break
             if match:

@@ -8,7 +8,6 @@ VinylBot gives you real-time notifications on the vinyl drops you need! It regul
 
 1. Must have [Python](https://www.python.org/downloads/) installed
 2. Have a Reddit and Discogs account
-3. Utilize a low power consumption computer to be continuously on to schedule the scripts (e.g. Raspberry Pi)
 
 ### Installation Instructions
 

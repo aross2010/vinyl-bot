@@ -1,6 +1,7 @@
 import json, os, praw
 from dotenv import load_dotenv
 import traceback
+import re
 
 # Returns the json object containing the post ids that have already been emailed out
 def read_posts_json():
@@ -88,14 +89,16 @@ def write_last_seen_json(is_main: bool, id: int):
 
 def is_valid_match_artist(artist: str, post: str):
         artist_in_post = post.split('-')[0].strip().lower() if '-' in post else post.split('(')[0].strip().lower()
-        if artist in artist_in_post: return True # presence of artist in post
-        return False 
+        match = rf'\b{re.escape(artist)}\b'
+        return re.search(match, artist_in_post) is not None
 
 # Validates whether a key is in a string. The key must be its own word or be a word with a non-letter trailing and leading it
 def is_valid_match(album_title: str, album_artists: list, post: str):
     artist_in_post = post.split('-')[0].strip().lower() if '-' in post else post.split('(')[0].strip().lower()
     album_in_post = post.split('-')[1].strip().lower() if '-' in post else post.strip().lower()
-    if album_title in album_in_post: 
+    match = rf'\b{re.escape(album_title)}\b'
+    valid_album = re.search(match, album_in_post) is not None
+    if valid_album: 
         # confirm with presence of artists
         for artist in album_artists:
             if artist in artist_in_post: return True # presence of artist in post AND album title

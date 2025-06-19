@@ -77,6 +77,8 @@
                   background-color: #3c3c3c;
                   border-radius: 10px;
                   padding: 10px;
+                  width: 100%;
+                  max-width: 500px;
                 "
               >
                 <a
@@ -89,9 +91,10 @@
                     cellpadding="0"
                   >
                     <tr>
-                      <td style="padding-right: 10px">
+                      <td style="padding-right: 15px">
+                        {% if album['cover'] %}
                         <img
-                          src="{{album['cover']}}"
+                          src="{{ album['cover'] }}"
                           alt="Album Cover"
                           style="
                             height: 125px;
@@ -102,6 +105,7 @@
                             margin-right: 5px;
                           "
                         />
+                        {% endif %}
                       </td>
                       <td style="vertical-align: center; margin-left: 5px">
                         <span
@@ -138,7 +142,6 @@
         </td>
       </tr>
     </table>
-    <p>You're welcome,</p>
-    <p>VinylBot 🤖</p>
+    <p>You're welcome,<br />VinylBot🤖</p>
   </body>
 </html>

@@ -16,6 +16,7 @@ VinylBot gives you real-time notifications on the vinyl drops you need! It regul
 ```
 git clone https://github.com/aross2010/vinyl-bot.git
 ```
+
 #### 2. Gather API keys
 
 [Reddit](https://www.reddit.com/wiki/api/)
@@ -45,21 +46,23 @@ pip install -r requirements.txt
 ```
 crontab -e
 ```
+
 Select Vim as the editor and press 'i' to insert the following text:
 
-````
+```
 # Main script ran every even minute
 */2 * * * * [python3 path] [insert path]/reddit_main.py >> [project folder path]/cron.log 2>&1
 
-# # Alt script ran every night at 12:59pm
+# # Alt script ran every day at 12:59pm (typically when releases are finished for the day)
 59 12 * * * [python3 path] [insert path]/reddit_alt.py >> [project folder path]/cron.log 2>&1
 
-# # Discogs script every one minute past every fourth hour
-1 */4 * * * [python3 path] [insert path]/discogs.py >> [project folder path]/cron.log 2>&1    
+# # Discogs script every four hours at the first minute
+1 */4 * * * [python3 path] [insert path]/discogs.py >> [project folder path]/cron.log 2>&1
 
 # # Cleaning script every Sunday at 11:59pm
 59 11 * * 6 [python3 path] [insert path]/clean.py >> [project folder path]/cron.log 2>&1
-````
+```
+
 Press 'esc' and ':wq' enter to quit and write out of the editor.
 
 #### 5. VinylBot Does the Rest!

@@ -43,13 +43,13 @@ def get_artists_posts(ids):
         
         if not discogs_album_match: continue
 
-        cover = post.get('tumbnail')
-        if not cover: cover = discogs_album_match['cover']
+        cover = post.get('tumbnail', None) # Use reddit thumbnail if available, else dont show any cover
+        album_in_post = post_title.split('-')[1].strip() if '-' in post else post.strip()
 
         data.append({
-            "title": discogs_album_match['title'],
+            "title": album_in_post, # Use the title of the release in the post
             "artists": discogs_album_match['artists'],
-            "cover": cover, # If no reddit thumbail image, use discogs cover
+            "cover": cover, 
             "link": post.get('url', f'https://www.reddit.com/r/VinylReleases/comments/{post_id}'), # Either link to shop to buy or to post
             "id": post_id,
             "time_posted": post.get('created_utc', time.time()) # If somehow no time posted, use current time (close enough)
